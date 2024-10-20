@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 # Create environment,
 # 如果is_slippery=True，那么冰面是滑的，那么做出行为后有1/3的可能性滑倒其他地方
-env = gym.make('FrozenLake-v1', desc=None, map_name="8x8", is_slippery=False, render_mode="rgb_array")
+env = gym.make('FrozenLake-v1', desc=None, map_name="4x4", is_slippery=True, render_mode="rgb_array")
 # Record video every 100 episode
 env = RecordVideo(env, 'videos/', episode_trigger=lambda x: x % 50000 == 0)
 
@@ -15,9 +15,9 @@ env = RecordVideo(env, 'videos/', episode_trigger=lambda x: x % 50000 == 0)
 env.reset()
 env.render()
 # build up Q-table
-# 地图是8*8的这意味着有64种状态，乘上4个动作，所以Q-table是16*4的
+# 地图是4x4的这意味着有16种状态，乘上4个动作，所以Q-table是4*4的
 # 创建一个Q-table，初始化为0
-qtable = np.zeros((64, 4))
+qtable = np.zeros((16, 4))
 # qtable = np.random.rand(64, 4)
 
 # !!! Alternatively, the gym library can also directly g
